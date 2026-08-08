@@ -60,7 +60,7 @@ object RootManager {
                 error = stderr.toString().trim()
             )
         } catch (e: Exception) {
-            Log.e(TAG, "Error executing su command: $command", e)
+            Log.w(TAG, "su command not available or denied: ${e.message}")
             RootCommandResult(-1, "", e.localizedMessage ?: "Execution failed")
         } finally {
             try { os?.close() } catch (_: Exception) {}
