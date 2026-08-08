@@ -24,6 +24,7 @@ import com.example.data.model.SavedLocation
 import com.example.navigation.LatLngPoint
 import com.example.root.RootManager
 import com.example.ui.components.JoystickPad
+import com.example.ui.components.MapComponent
 import com.example.ui.components.MapRadarView
 import com.example.ui.theme.*
 import com.example.zygisk.ZygiskHookEngine
@@ -171,13 +172,13 @@ fun RadarControlTab(
                 .fillMaxSize()
                 .padding(bottom = 140.dp)
         ) {
-            // Radar Map View
-            MapRadarView(
-                currentPos = currentPos,
-                targetDestination = null,
-                checkpoints = checkpoints,
-                isSimulating = isSimulating,
-                onMapClick = onMapClick
+            // Reusable Compose Map Component initialized and centered on current GPS location
+            MapComponent(
+                currentLocation = currentPos,
+                zoomLevel = 15f,
+                onLocationSelected = onMapClick,
+                onRecenterClicked = { onMapClick(currentPos) },
+                modifier = Modifier.height(280.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
