@@ -1,0 +1,6 @@
+{
+  "name": "GPS Setter Pro",
+  "description": "Professional GPS Simulation and Route Navigation Tool with Root & System App Integration",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
