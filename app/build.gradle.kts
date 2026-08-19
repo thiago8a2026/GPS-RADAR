@@ -15,8 +15,8 @@ android {
 
   defaultConfig {
     applicationId = "com.aistudio.gpssetterpro.xkldpq"
-    minSdk = 24
-    targetSdk = 36
+    minSdk = 23
+    targetSdk = 35
     versionCode = 1
     versionName = "1.0"
 
