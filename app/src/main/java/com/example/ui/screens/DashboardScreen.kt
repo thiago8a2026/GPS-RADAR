@@ -529,7 +529,10 @@ fun SystemStatusTab(
     isZygiskActive: Boolean
 ) {
     val zygiskStatus = ZygiskHookEngine.getStatus()
-    val hwid = remember { RootManager.getHardwareId() }
+    var hwid by remember { mutableStateOf("Verificando...") }
+    LaunchedEffect(isRootAvailable) {
+        hwid = RootManager.getHardwareId()
+    }
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(12.dp),

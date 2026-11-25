@@ -19,9 +19,10 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
   }
 }
 
-rootProject.name = "GPS Setter Pro"
+rootProject.name = "GPS ANTHI"
 
 include(":app")
