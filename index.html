@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPS RADAR DORADO - Simulación de GPS & Radar de Retenes Profesional</title>
+    <title>GPS ANTHI - Simulación GPS Nativa con OpenStreetMap y Root</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #0B101D;
             --bg-surface: #141C2E;
             --bg-card: #1E293B;
-            --gold-primary: #FFD700;
-            --gold-hover: #FFC400;
-            --gold-glow: rgba(255, 215, 0, 0.25);
             --cyan-accent: #00F0FF;
+            --cyan-hover: #33F3FF;
+            --cyan-glow: rgba(0, 240, 255, 0.25);
             --green-active: #00E676;
             --text-main: #F1F5F9;
             --text-sub: #94A3B8;
-            --border-color: rgba(255, 215, 0, 0.2);
+            --border-color: rgba(0, 240, 255, 0.22);
         }
 
         * {
@@ -43,7 +42,7 @@
             transform: translateX(-50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, rgba(0, 240, 255, 0.05) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.14) 0%, rgba(0, 230, 118, 0.06) 40%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -57,6 +56,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -68,61 +69,63 @@
         .logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #FFD700, #FF8C00);
+            background: linear-gradient(135deg, #00F0FF, #0072FF);
+            color: #0B101D;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 0 20px var(--gold-glow);
+            font-size: 1.4rem;
+            font-weight: 800;
+            box-shadow: 0 0 20px var(--cyan-glow);
         }
 
         .logo-text {
             font-weight: 800;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #FFFFFF, #FFD700);
+            font-size: 1.3rem;
+            letter-spacing: -0.4px;
+            background: linear-gradient(135deg, #FFFFFF, #00F0FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .badge-root {
-            background: rgba(0, 230, 118, 0.15);
+            background: rgba(0, 230, 118, 0.14);
             border: 1px solid var(--green-active);
             color: var(--green-active);
-            padding: 0.35rem 0.8rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.45rem;
         }
 
         .badge-root::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             background-color: var(--green-active);
             border-radius: 50%;
             display: inline-block;
             box-shadow: 0 0 8px var(--green-active);
         }
 
-        hero {
+        .hero {
             position: relative;
             z-index: 10;
             max-width: 900px;
-            margin: 3rem auto 5rem;
+            margin: 2.5rem auto 4.5rem;
             padding: 0 1.5rem;
             text-align: center;
         }
 
         .hero-tag {
             display: inline-block;
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(0, 240, 255, 0.1);
             border: 1px solid var(--border-color);
-            color: var(--gold-primary);
+            color: var(--cyan-accent);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
@@ -133,51 +136,47 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #FFFFFF 30%, #FFD700 100%);
+            margin-bottom: 1.25rem;
+            background: linear-gradient(180deg, #FFFFFF 35%, #00F0FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-description {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-sub);
             max-width: 700px;
-            margin: 0 auto 2.5rem;
-            font-weight: 400;
+            margin: 0 auto 2.25rem;
         }
 
         .cta-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.9rem;
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #FFD700, #FF9900);
+            background: linear-gradient(135deg, #00E676, #00F0FF);
             color: #0B101D;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            padding: 1.1rem 2.8rem;
+            padding: 1.05rem 2.6rem;
             border-radius: 16px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            box-shadow: 0 10px 30px var(--gold-glow);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            gap: 0.7rem;
+            box-shadow: 0 10px 30px var(--cyan-glow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .btn-download:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
-            background: linear-gradient(135deg, #FFE033, #FFB000);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.35);
         }
 
         .sub-text {
@@ -190,9 +189,9 @@
             z-index: 10;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 6rem;
+            padding: 1.5rem 1.5rem 5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -200,55 +199,50 @@
             background: var(--bg-surface);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            padding: 1.85rem;
+            transition: border-color 0.25s ease, transform 0.25s ease;
         }
 
         .feature-card:hover {
             border-color: var(--border-color);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
         }
 
         .card-icon {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             background: var(--bg-card);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-            color: var(--gold-primary);
+            font-size: 1.35rem;
+            margin-bottom: 1.1rem;
+            color: var(--cyan-accent);
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
             color: var(--text-main);
         }
 
         .feature-card p {
             color: var(--text-sub);
             font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         .spec-box {
             position: relative;
             z-index: 10;
             max-width: 900px;
-            margin: 0 auto 6rem;
-            padding: 2.5rem;
+            margin: 0 auto 5rem;
+            padding: 2.25rem;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
         }
 
         .spec-header {
@@ -258,12 +252,14 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 1rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .spec-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--gold-primary);
+            color: var(--cyan-accent);
         }
 
         .spec-list {
@@ -276,28 +272,28 @@
         .spec-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.7rem;
             font-size: 0.95rem;
             color: var(--text-main);
         }
 
         .spec-item span {
-            color: var(--cyan-accent);
-            font-weight: bold;
+            color: var(--green-active);
+            font-weight: 700;
         }
 
         footer {
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             color: var(--text-sub);
             font-size: 0.9rem;
         }
 
         footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
     </style>
 </head>
@@ -307,83 +303,77 @@
 
     <header>
         <div class="logo-container">
-            <div class="logo-icon">🎯</div>
-            <div class="logo-text">GPS RADAR DORADO</div>
+            <div class="logo-icon">📍</div>
+            <div class="logo-text">GPS ANTHI</div>
         </div>
-        <div class="badge-root">Magisk / KernelSU Ready</div>
+        <div class="badge-root">Magisk / su Ready</div>
     </header>
 
-    <hero>
-        <div class="hero-tag">⚡ Sistema Profesional de Geolocalización Stealth</div>
-        <h1>Simulación de GPS Indetectable & Radar de Retenes</h1>
+    <section class="hero">
+        <div class="hero-tag">OpenStreetMap Nativo • Control Root</div>
+        <h1>Simulación GPS Precisa sin Servicios de Google</h1>
         <p class="hero-description">
-            Diseñado para uso profesional en carretera y trabajo. Módulo con intercepción en C++ (Zygisk / Root) que enmascara la bandera de ubicación simulada para máxima evasión e integridad.
+            <strong>GPS ANTHI</strong> combina mapas OpenStreetMap (<code>osmdroid</code>), control limpio con botones <strong>Play / Stop</strong>, rutas sobre calles reales y gestión Root / Magisk en segundo plano.
         </p>
 
         <div class="cta-group">
-            <a href="app.apk" download="app.apk" class="btn-download" id="downloadBtn">
-                <span>⚡ Descargar APK Pro (GPS RADAR DORADO)</span>
+            <a href="./app.apk" download="GPS-ANTHI.apk" class="btn-download" id="downloadBtn">
+                <span>Descargar APK (GPS ANTHI)</span>
             </a>
-            <span class="sub-text">Compatible con Android 10+ • Requiere Magisk / KernelSU / Root</span>
+            <span class="sub-text">Compatible con Android 6.0+ (API 23+) • Requiere Root (Magisk / su)</span>
         </div>
-    </hero>
+    </section>
 
     <section class="features-grid">
         <div class="feature-card">
+            <div class="card-icon">🗺️</div>
+            <h3>Mapa 100% OpenStreetMap</h3>
+            <p>Implementado sobre <code>osmdroid</code> sin dependencia de Google Maps SDK, ideal para dispositivos AOSP o personalizados.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-icon">🛣️</div>
+            <h3>Rutas Viales &amp; Play / Stop</h3>
+            <p>Traza recorridos de solo ida, ida y vuelta o bucle siguiendo calles reales con velocidad ajustable en km/h y notificación persistente.</p>
+        </div>
+
+        <div class="feature-card">
             <div class="card-icon">🛡️</div>
-            <h3>Evasión Stealth Zygisk / C++</h3>
-            <p>Intercepta llamadas nativas en <code>LocationManager</code> y <code>FusedLocationProviderClient</code> forzando <code>isFromMockProvider() = false</code> sin activar opciones de desarrollador.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="card-icon">🕹️</div>
-            <h3>Joystick Flotante & Ruta A ➔ B</h3>
-            <p>Control de movimiento en tiempo real con latencia ultra baja, velocidad regulable (5 - 120 km/h) y algoritmo de fluctuación (Jittering) para simular hardware real.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="card-icon">🚨</div>
-            <h3>Radar Comunitaria de Retenes</h3>
-            <p>Visualiza y reporta controles policiales y retenes en el mapa en tiempo real con sistema de votación y alertas por geofencing.</p>
+            <h3>Root / Magisk con libsu</h3>
+            <p>Verificación y ejecución privilegiada en segundo plano (<code>Dispatchers.IO</code>) con alineación multi-proveedor y restauración limpia al pulsar Stop.</p>
         </div>
 
         <div class="feature-card">
             <div class="card-icon">📍</div>
-            <h3>Puntos Frecuentes & Nube</h3>
-            <p>Guarda bases de trabajo, clientes y retenes en base de datos local Room con sincronización y exportación de ubicaciones clave.</p>
+            <h3>Puntos Clave &amp; Geofencing</h3>
+            <p>Guarda ubicaciones frecuentes, configura zonas geográficas de entrada/salida y reenvía coordenadas directo a WhatsApp o Telegram.</p>
         </div>
 
         <div class="feature-card">
-            <div class="card-icon">🔑</div>
-            <h3>Licencias HWID / Dispositivo</h3>
-            <p>Soporte de autenticación vinculada al ID único de hardware (1 cuenta = 1 dispositivo) respaldado por API REST Node.js y PostgreSQL / PostGIS.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="card-icon">🛰️</div>
-            <h3>Radar Estilo Tacómetro</h3>
-            <p>Interfaz oscura de alto contraste optimizada para conducción, con anillos de radar concéntricos e indicador de coordenadas dinámico.</p>
+            <div class="card-icon">💳</div>
+            <h3>Suscripción Local y Global</h3>
+            <p>Arquitectura lista para cuentas de usuario y planes mensuales verificados en servidor con <strong>Nequi</strong>, <strong>PayU</strong> y <strong>Stripe</strong>.</p>
         </div>
     </section>
 
     <section class="spec-box">
         <div class="spec-header">
-            <div class="spec-title">Especificaciones Técnicas del Sistema</div>
-            <div class="badge-root">v2.4.0 Release</div>
+            <div class="spec-title">Especificaciones Técnicas de GPS ANTHI</div>
+            <div class="badge-root">v1.0 • Build Debug</div>
         </div>
         <ul class="spec-list">
-            <li class="spec-item"><span>✓</span> Inyección Root su & /system/priv-app/</li>
-            <li class="spec-item"><span>✓</span> C++ Native Hook (Zygisk Engine)</li>
-            <li class="spec-item"><span>✓</span> SQLite / Room Persistence Local</li>
-            <li class="spec-item"><span>✓</span> Backend PostGIS ST_DWithin Geospatial</li>
-            <li class="spec-item"><span>✓</span> Jetpack Compose M3 Dark Theme</li>
-            <li class="spec-item"><span>✓</span> Algoritmo Haversine & Jitter Simulation</li>
+            <li class="spec-item"><span>✓</span> OpenStreetMap (osmdroid) + Enrutamiento Vial</li>
+            <li class="spec-item"><span>✓</span> Gestión Root (libsu + Magisk / su)</li>
+            <li class="spec-item"><span>✓</span> Servicio en primer plano (GPS / Network / Fused)</li>
+            <li class="spec-item"><span>✓</span> Persistencia local Room &amp; Favoritos</li>
+            <li class="spec-item"><span>✓</span> Geofencing &amp; Reenvío por Intent</li>
+            <li class="spec-item"><span>✓</span> Pasarelas Nequi, PayU y Stripe (Backend)</li>
         </ul>
     </section>
 
     <footer>
-        <p><strong>GPS RADAR DORADO</strong> — Sistema Profesional de Simulación & Navegación</p>
-        <p>© 2026 Todos los derechos reservados.</p>
+        <p><strong>GPS ANTHI</strong> — Simulación GPS Profesional sobre OpenStreetMap</p>
+        <p>© 2026 GPS ANTHI. Todos los derechos reservados.</p>
     </footer>
 
 </body>
